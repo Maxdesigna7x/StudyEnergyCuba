@@ -112,7 +112,7 @@ ax1.set_xlabel('Año', fontsize=11, fontweight='bold')
 ax1.set_ylabel('Suministro de Petróleo Estatal (BPD)', fontsize=11, color='#2563eb', fontweight='bold')
 ax2.set_ylabel('Déficit de Generación Pico (MW - UNE)', fontsize=11, color='#dc2626', fontweight='bold')
 
-ax1.set_ylim(0, 130000)
+ax1.set_ylim(130000, 0) # Eje invertido (menor arriba, mayor abajo)
 ax2.set_ylim(0, 2500)
 
 # Anotación y etiquetas en 2026 para ambas líneas del Gobierno

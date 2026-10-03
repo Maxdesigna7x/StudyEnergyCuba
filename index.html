@@ -329,7 +329,7 @@
 
       <div class="chart-container">
         <div class="chart-title">Suministro Estatal al Gobierno vs Déficit Promedio en MW (2020–2026 YTD)</div>
-        <div class="chart-caption">Toca o pasa el cursor sobre los puntos y barras para inspeccionar los datos exactos auditados.</div>
+        <div class="chart-caption">Eje izquierdo invertido (menor combustible arriba, mayor abajo) para visualizar la correlación directa entre caída de combustible y aumento de apagones. Toca o pasa el cursor para inspeccionar.</div>
         <div class="canvas-wrap" style="height: 310px;">
           <canvas id="chartGovVsDeficit"></canvas>
         </div>
@@ -844,6 +844,7 @@
           y: {
             type: 'linear',
             position: 'left',
+            reverse: true,
             min: 0,
             max: 130000,
             grid: { color: '#f1f5f9' },

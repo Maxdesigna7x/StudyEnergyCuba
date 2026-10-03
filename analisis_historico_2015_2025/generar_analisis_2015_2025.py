@@ -120,7 +120,7 @@ ax1.set_xlabel('Año', fontsize=11, fontweight='bold')
 ax1.set_ylabel('Suministro de Petróleo Estatal (BPD)', fontsize=11, color='#2563eb', fontweight='bold')
 ax2.set_ylabel('Déficit Promedio Pico (MW)', fontsize=11, color='#dc2626', fontweight='bold')
 
-ax1.set_ylim(0, 160000)
+ax1.set_ylim(160000, 0) # Eje invertido (menor arriba, mayor abajo)
 ax2.set_ylim(0, 2500)
 
 ax1.scatter([2026], [state_fuel_available[-1]], color='#2563eb', s=100, zorder=5)
