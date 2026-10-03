@@ -249,9 +249,9 @@
       <div class="answer-item">
         <div class="q-title" style="color: var(--red);">1. ¿Concuerda el combustible que entra con la generación?</div>
         <div class="q-text">
-          <strong>NO concuerda. La brecha de 2023 es la prueba matemática:</strong><br>
-          En 2023, Cuba dispuso de <strong>115,000 barriles diarios (BPD)</strong>. Sin embargo, para generar los 13,221 GWh fósiles de ese año se necesitaron solo <strong>65,800 BPD</strong> (según los 550 kWh/barril oficiales de la ONEI).<br>
-          Sobró un remanente gigantesco de <strong>~49,200 BPD</strong>. Incluso restando el transporte e industria interna (~32,000 BPD), quedaron <strong>más de 17,000 BPD desaparecidos</strong> (reexportados o desviados a divisas). A pesar de ese superávit, <strong>el país sufrió un déficit crónico de 880 MW pico</strong>. El combustible que entró NO se tradujo en electricidad para la población.
+          <strong>NO concuerda. La brecha de 2023 y las roturas de termoeléctricas son la prueba matemática:</strong><br>
+          En 2023, Cuba dispuso de <strong>115,000 barriles diarios (BPD)</strong>. Sin embargo, para generar la electricidad fósil de ese año se necesitaron solo <strong>65,800 BPD</strong> (según los 550 kWh/barril oficiales de la ONEI).<br>
+          Sobró un remanente gigantesco de <strong>~49,200 BPD</strong>. <strong>¿Por qué había apagones crónicos de 880 MW si sobraba petróleo?</strong> Porque las 8 Centrales Termoeléctricas (CTEs) estaban <strong>destruidas por averías (entre 900 y 1,100 MW fuera de servicio continuo)</strong> y no podían quemar el crudo pesado. Al no caber en las plantas rotas ni poder usarse en motores diésel, el gobierno <strong>reexportó cargamentos a Asia (China)</strong> y desvió combustible a divisas (turismo, aerolíneas, búnker marino de GAESA), dejando a la población a oscuras.
         </div>
       </div>
 
@@ -425,9 +425,109 @@
       <div class="table-hint">← Desliza para ver la tabla completa (el combustible privado de EE.UU. está 100% excluido del SEN)</div>
     </section>
 
-    <!-- GRÁFICO 3: SOLAR VS CAÍDA -->
+    <!-- SECCIÓN 3: ROTURAS DE TERMOELÉCTRICAS VS FALTA DE COMBUSTIBLE -->
     <section>
-      <h2>3. ¿Se debe la caída a la energía solar?</h2>
+      <h2>3. El Cuello de Botella: Roturas en Termoeléctricas vs Falta de Combustible</h2>
+      <p>
+        ¿Por qué en 2023 sobraban 49,200 BPD de petróleo y aun así ocurrían 880 MW de apagones? La respuesta está en los partes diarios de la <strong>Unión Eléctrica (UNE)</strong> y los análisis del Instituto de Energía de Texas (Jorge Piñón): <strong>las termoeléctricas estaban rotas</strong> y existía un bloqueo técnico en el sistema:
+      </p>
+
+      <ul style="font-size:0.92rem; color:#334155; margin-left:1.2rem; margin-bottom:1rem; line-height:1.65;">
+        <li><strong>Incompatibilidad química insalvable:</strong> Las 8 Centrales Termoeléctricas (CTEs) son las <em>únicas</em> plantas capaces de quemar el crudo nacional extrapesado (7-8% de azufre). Los motores diésel de la Generación Distribuida (MAN, MTU y Hyundai) no pueden tragar crudo pesado porque se funden; requieren diésel ligero o fuel oil tratado.</li>
+        <li><strong>Fierros colapsados (Cuello de botella térmico):</strong> Durante 2023, entre <strong>800 y 1,100 MW térmicos estuvieron permanentemente fuera de servicio</strong> (el incendio de Felton 2 destruyó 250 MW para siempre, Guiteras colapsaba decenas de veces al año, calderas carcomidas por azufre).</li>
+        <li><strong>Destino del excedente:</strong> Al estar las calderas rotas, el crudo pesado no cabía físicamente en la red eléctrica. El gobierno lo almacenó en tanques y luego lo <strong>reexportó en triangulación a Asia (China)</strong> o lo refinó en Cienfuegos para sacar búnker marino y turbocombustible para aerolíneas para captar divisas (GAESA).</li>
+      </ul>
+
+      <div class="chart-container">
+        <div class="chart-title">Desglose Técnico del Déficit (UNE): Averías de Plantas vs Falta de Combustible</div>
+        <div class="chart-caption">MW indisponibles reportados en partes diarios. Toca las barras para ver cada causa. En 2023 la crisis era mecánica; en 2026 se unen plantas destruidas con asfixia total de combustible.</div>
+        <div class="canvas-wrap" style="height: 310px;">
+          <canvas id="chartBreakdownsVsFuel"></canvas>
+        </div>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Año</th>
+              <th class="num">Averías/Mant. CTEs (MW)</th>
+              <th class="num">Averías Motores Distr. (MW)</th>
+              <th class="num">Falta Combustible (MW)</th>
+              <th class="num">Déficit Pico UNE (MW)</th>
+              <th>Diagnóstico del Sistema</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>2020</td>
+              <td class="num">350</td>
+              <td class="num">400</td>
+              <td class="num">100</td>
+              <td class="num">150</td>
+              <td>Manejable con reservas petroleras (109k BPD).</td>
+            </tr>
+            <tr>
+              <td>2021</td>
+              <td class="num">550</td>
+              <td class="num">500</td>
+              <td class="num">250</td>
+              <td class="num">520</td>
+              <td>Inicio de corrosión severa por crudo nacional sin mantenimiento.</td>
+            </tr>
+            <tr>
+              <td>2022</td>
+              <td class="num">850</td>
+              <td class="num">650</td>
+              <td class="num">450</td>
+              <td class="num">980</td>
+              <td>Incendio catastrófico de Felton 2 (-250 MW permanentes) + huracán Ian.</td>
+            </tr>
+            <tr style="background:#fef3c7;">
+              <td><strong>2023 ⚡</strong></td>
+              <td class="num" style="font-weight:700; color:var(--red);">950</td>
+              <td class="num" style="font-weight:700;">800</td>
+              <td class="num">450</td>
+              <td class="num" style="font-weight:700; color:var(--red);">880</td>
+              <td><strong>Crisis Mecánica:</strong> Sobraba petróleo (115k BPD), pero las CTEs rotas no podían quemarlo. Excedente reexportado.</td>
+            </tr>
+            <tr>
+              <td>2024</td>
+              <td class="num">1,000</td>
+              <td class="num">900</td>
+              <td class="num">650</td>
+              <td class="num">1,350</td>
+              <td>Colapso total del SEN (Blackout nacional en octubre tras caída de Guiteras).</td>
+            </tr>
+            <tr>
+              <td>2025</td>
+              <td class="num">1,100</td>
+              <td class="num">950</td>
+              <td class="num">850</td>
+              <td class="num">1,950</td>
+              <td>Corte de envíos venezolanos paraliza decenas de grupos electrógenos.</td>
+            </tr>
+            <tr style="background:#eff6ff;">
+              <td><strong>2026 YTD</strong></td>
+              <td class="num" style="font-weight:700; color:var(--red);">1,150</td>
+              <td class="num" style="font-weight:700;">950</td>
+              <td class="num" style="font-weight:700; color:#0d9488;">1,100</td>
+              <td class="num" style="font-weight:700; color:var(--red);">2,100</td>
+              <td><strong>Colapso Doble:</strong> Termoeléctricas destruidas + sin combustible estatal (>100 motores apagados por diésel).</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="table-hint">← Desliza para ver la tabla completa (fuente: partes técnicos de la Unión Eléctrica)</div>
+
+      <div class="callout callout-amber">
+        <strong>Conclusión de las roturas:</strong> El "gap" de combustible de 2023 demuestra que el apagón no fue por falta de petróleo, sino por <strong>destrucción de la infraestructura termoeléctrica</strong>. En 2026, la catástrofe es doble: las plantas siguen destruidas tras más de 40 años de explotación y los suministros de combustible estatal colapsaron a su mínimo histórico (35,500 BPD).
+      </div>
+    </section>
+
+    <!-- GRÁFICO 4: SOLAR VS CAÍDA -->
+    <section>
+      <h2>4. ¿Se debe la caída a la energía solar?</h2>
       <p>La comparación matemática directa descarta categóricamente que la reducción de petróleo sea por transición ecológica:</p>
 
       <div class="chart-container">
@@ -443,9 +543,9 @@
       </div>
     </section>
 
-    <!-- GRÁFICO 4: IMPORTACIONES DESGLOSADAS -->
+    <!-- GRÁFICO 5: IMPORTACIONES DESGLOSADAS -->
     <section>
-      <h2>4. Desglose de Importaciones: Estado vs Privado</h2>
+      <h2>5. Desglose de Importaciones: Estado vs Privado</h2>
       <p>Evolución de los cargamentos recibidos, distinguiendo a los aliados del Estado frente a las ventas comerciales de EE.UU.:</p>
 
       <div class="chart-container">
@@ -605,7 +705,69 @@
       }
     });
 
-    // 3. Gráfico Solar vs Caída Petróleo
+    // 3. Gráfico Roturas CTEs vs Falta Combustible (UNE)
+    new Chart(document.getElementById('chartBreakdownsVsFuel').getContext('2d'), {
+      type: 'bar',
+      data: {
+        labels: years,
+        datasets: [
+          {
+            label: 'Averías/Mant. CTEs (MW)',
+            data: [350, 550, 850, 950, 1000, 1100, 1150],
+            backgroundColor: '#991b1b',
+            stack: 'combined'
+          },
+          {
+            label: 'Averías Mecánicas Motores (MW)',
+            data: [400, 500, 650, 800, 900, 950, 950],
+            backgroundColor: '#ea580c',
+            stack: 'combined'
+          },
+          {
+            label: 'Falta de Combustible (MW)',
+            data: [100, 250, 450, 450, 650, 850, 1100],
+            backgroundColor: '#0d9488',
+            stack: 'combined'
+          },
+          {
+            label: 'Déficit Pico UNE (MW)',
+            data: [150, 520, 980, 880, 1350, 1950, 2100],
+            type: 'line',
+            borderColor: '#2563eb',
+            backgroundColor: '#2563eb',
+            borderWidth: 2.8,
+            pointRadius: 5,
+            pointHoverRadius: 7,
+            tension: 0.15
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        interaction: { mode: 'index', intersect: false },
+        plugins: {
+          legend: { position: 'bottom', labels: { boxWidth: 10, font: { size: 10 } } },
+          tooltip: {
+            callbacks: {
+              label: ctx => ctx.dataset.label + ': ' + ctx.raw.toLocaleString() + ' MW'
+            }
+          }
+        },
+        scales: {
+          x: { stacked: true, grid: { display: false }, ticks: { font: { size: 10 } } },
+          y: {
+            stacked: true,
+            min: 0,
+            max: 3500,
+            grid: { color: '#f1f5f9' },
+            ticks: { font: { size: 9 }, callback: v => v + ' MW' }
+          }
+        }
+      }
+    });
+
+    // 4. Gráfico Solar vs Caída Petróleo
     new Chart(document.getElementById('chartSolarVsFuel').getContext('2d'), {
       type: 'bar',
       data: {
@@ -643,7 +805,7 @@
       }
     });
 
-    // 4. Gráfico Importaciones por Origen (Estado vs Privado)
+    // 5. Gráfico Importaciones por Origen (Estado vs Privado)
     new Chart(document.getElementById('chartImportsByCountry').getContext('2d'), {
       type: 'bar',
       data: {
