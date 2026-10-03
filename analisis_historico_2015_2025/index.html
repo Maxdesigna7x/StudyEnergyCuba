@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>Cuba: Estudio Histórico de Energía (2015–2026 YTD)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <style>
+    :root {
+      --bg: #ffffff;
+      --bg-subtle: #f8fafc;
+      --border: #e2e8f0;
+      --text: #0f172a;
+      --text-muted: #64748b;
+      --text-light: #94a3b8;
+      --red: #dc2626;
+      --red-bg: #fef2f2;
+      --blue: #2563eb;
+      --blue-bg: #eff6ff;
+      --green: #16a34a;
+      --amber: #d97706;
+      --radius: 12px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      font-size: 16px;
+      padding: 0 0 4rem;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0 1.25rem;
+    }
+
+    .nav-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      color: var(--blue);
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-decoration: none;
+      margin-bottom: 1rem;
+    }
+
+    header {
+      padding: 2rem 0 1.5rem;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 2rem;
+    }
+
+    .tag {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #7c3aed;
+      background: #f5f3ff;
+      padding: 0.25rem 0.6rem;
+      border-radius: 6px;
+      margin-bottom: 0.75rem;
+    }
+
+    h1 {
+      font-size: 1.75rem;
+      font-weight: 800;
+      line-height: 1.25;
+      color: var(--text);
+      letter-spacing: -0.02em;
+      margin-bottom: 0.6rem;
+    }
+
+    .header-desc { font-size: 1rem; color: var(--text-muted); line-height: 1.5; }
+
+    /* Conclusiones */
+    .conclusions-box {
+      background: var(--bg-subtle);
+      border: 1px solid var(--border);
+      border-left: 4px solid #7c3aed;
+      border-radius: var(--radius);
+      padding: 1.25rem;
+      margin-bottom: 2rem;
+    }
+
+    .conclusions-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 0.75rem;
+    }
+
+    .conclusion-point {
+      margin-bottom: 1rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .conclusion-point:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
+
+    .point-title { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.35rem; }
+    .point-desc { font-size: 0.9rem; color: #334155; line-height: 1.5; }
+
+    /* KPIs */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.75rem;
+      margin-bottom: 2rem;
+    }
+    @media (max-width: 480px) { .stats-grid { grid-template-columns: 1fr; } }
+
+    .stat-card {
+      background: var(--bg-subtle);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1rem;
+    }
+    .stat-label { font-size: 0.75rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; }
+    .stat-num { font-size: 1.55rem; font-weight: 800; font-family: 'JetBrains Mono', monospace; margin: 0.2rem 0; color: var(--text); }
+    .stat-sub { font-size: 0.78rem; color: var(--text-muted); }
+
+    /* Gráficos */
+    .chart-container {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.25rem 1rem 1rem;
+      margin: 1.5rem 0 2rem;
+    }
+    .chart-title { font-size: 0.98rem; font-weight: 700; color: var(--text); margin-bottom: 0.25rem; }
+    .chart-caption { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 1rem; }
+    .canvas-wrap { position: relative; width: 100%; height: 290px; }
+
+    /* Tablas */
+    .table-wrap {
+      width: 100%;
+      overflow-x: auto;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      margin: 1.25rem 0;
+      -webkit-overflow-scrolling: touch;
+    }
+    table { width: 100%; border-collapse: collapse; font-size: 0.82rem; white-space: nowrap; }
+    th { background: var(--bg-subtle); color: var(--text); font-weight: 600; padding: 0.65rem 0.85rem; border-bottom: 1px solid var(--border); }
+    td { padding: 0.65rem 0.85rem; border-bottom: 1px solid var(--border); color: #334155; }
+    tr:last-child td { border-bottom: none; }
+    .num { text-align: right; font-family: 'JetBrains Mono', monospace; }
+    .table-hint { font-size: 0.75rem; color: var(--text-light); text-align: right; margin-top: 0.25rem; }
+
+    h2 { font-size: 1.35rem; font-weight: 700; margin-bottom: 0.6rem; color: var(--text); }
+    p { font-size: 0.95rem; color: #334155; margin-bottom: 1rem; line-height: 1.6; }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding-top: 1.5rem;
+      margin-top: 3rem;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      text-align: center;
+    }
+    footer a { color: var(--blue); text-decoration: none; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container">
+      <a href="../index.html" class="nav-back">← Volver al Informe Principal</a>
+      <div class="tag">Serie de 12 Años</div>
+      <h1>Estudio Histórico de Energía en Cuba (2015–2026 YTD)</h1>
+      <p class="header-desc">La evolución desde la época de superávit y reexportación formal hasta el corte total de suministros venezolanos y el nuevo esquema de 2026.</p>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <div class="conclusions-box">
+      <div class="conclusions-title">📌 Conclusiones de la Serie Histórica</div>
+
+      <div class="conclusion-point">
+        <div class="point-title" style="color: #7c3aed;">1. La Era de Superávit y Reventa Oficial (2015–2018)</div>
+        <div class="point-desc">
+          En 2015–2016, Cuba recibía entre 75,000 y 90,000 BPD de Venezuela y extraía ~50,000 BPD propios, disponiendo de <strong>128,000 a 145,000 BPD</strong> (frente a una demanda de 110k). <strong>El déficit de generación era de 0 MW</strong>. En este periodo, Cuba procesaba y reexportaba legalmente derivados refinados mediante la empresa mixta Cuvenpetrol en Cienfuegos para captar cientos de millones de dólares.
+        </div>
+      </div>
+
+      <div class="conclusion-point">
+        <div class="point-title" style="color: var(--red);">2. El Efecto Umbral de los 110,000 BPD</div>
+        <div class="point-desc">
+          El análisis a 12 años muestra que sobre los 110,000 BPD el sistema eléctrico no sufre apagones. Al perforar esa cota a partir de las sanciones de 2019, el déficit se disparó exponencialmente, exacerbado por la falta de divisas para reparar las termoeléctricas.
+        </div>
+      </div>
+
+      <div class="conclusion-point">
+        <div class="point-title" style="color: var(--blue);">3. La Ruptura de 2026</div>
+        <div class="point-desc">
+          La detención de Nicolás Maduro en enero de 2026 cerró el grifo venezolano (1,500 BPD residuales). EE.UU. asumió el rol de principal proveedor de destilados refinados (~32,000 BPD), pero el deterioro acumulado de las plantas llevó el déficit al récord histórico de 2,100 MW.
+        </div>
+      </div>
+    </div>
+
+    <!-- Stats -->
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-label">Pico histórico (2015)</div>
+        <div class="stat-num" style="color:var(--blue);">145k BPD</div>
+        <div class="stat-sub">Superávit total (Déficit 0 MW)</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Comb. Estatal 2026</div>
+        <div class="stat-num" style="color:var(--red);">35.5k BPD</div>
+        <div class="stat-sub">Colapso del SEN (-75% vs 2015)</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Déficit (2015 vs 2026)</div>
+        <div class="stat-num" style="color:var(--amber);">0 → 2.1k MW</div>
+        <div class="stat-sub">De luz plena a apagones masivos</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">Generación anual</div>
+        <div class="stat-num" style="color:#7c3aed;">20.8k → 11.4k</div>
+        <div class="stat-sub">GWh generados (-45%)</div>
+      </div>
+    </div>
+
+    <!-- Gráficos -->
+    <section>
+      <h2>Evolución de las Importaciones (2015–2026)</h2>
+      <p>Nótese la hegemonía absoluta de Venezuela hasta 2022, el puente mexicano en 2023–2025 y la irrupción de combustibles estadounidenses en 2026.</p>
+
+      <div class="chart-container">
+        <div class="chart-title">Importaciones por País Proveedor (BPD)</div>
+        <div class="chart-caption">Serie de 12 años compilada de UT Austin, Reuters y Kpler.</div>
+        <div class="canvas-wrap">
+          <canvas id="chartHistoryImports"></canvas>
+        </div>
+      </div>
+
+      <div class="chart-container">
+        <div class="chart-title">Suministro Estatal al Gobierno vs Déficit en MW (2015–2026)</div>
+        <div class="chart-caption">Azul: Combustible Estatal Total | Verde punteado: Importado vendido al Gobierno | Barras rojas: Déficit MW. (Excluido el combustible privado de EE.UU.).</div>
+        <div class="canvas-wrap" style="height: 310px;">
+          <canvas id="chartHistoryDeficit"></canvas>
+        </div>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Año</th>
+              <th class="num">Vzla</th>
+              <th class="num">México</th>
+              <th class="num">Rusia</th>
+              <th class="num">Otros</th>
+              <th class="num">Imp. Gob.</th>
+              <th class="num">Nac.</th>
+              <th class="num">Total Estatal</th>
+              <th class="num">Déficit MW</th>
+              <th class="num">Privado EE.UU. (No SEN)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>2015</td>
+              <td class="num">90,000</td>
+              <td class="num">0</td>
+              <td class="num">0</td>
+              <td class="num">5,000</td>
+              <td class="num">95,000</td>
+              <td class="num">50,000</td>
+              <td class="num"><strong>145,000</strong></td>
+              <td class="num" style="color:var(--green);">0</td>
+              <td class="num">0</td>
+            </tr>
+            <tr>
+              <td>2016</td>
+              <td class="num">75,000</td>
+              <td class="num">0</td>
+              <td class="num">0</td>
+              <td class="num">5,000</td>
+              <td class="num">80,000</td>
+              <td class="num">48,000</td>
+              <td class="num"><strong>128,000</strong></td>
+              <td class="num" style="color:var(--green);">0</td>
+              <td class="num">0</td>
+            </tr>
+            <tr>
+              <td>2017</td>
+              <td class="num">58,000</td>
+              <td class="num">0</td>
+              <td class="num">4,000</td>
+              <td class="num">4,000</td>
+              <td class="num">66,000</td>
+              <td class="num">45,000</td>
+              <td class="num"><strong>111,000</strong></td>
+              <td class="num">~20</td>
+              <td class="num">0</td>
+            </tr>
+            <tr>
+              <td>2018</td>
+              <td class="num">51,000</td>
+              <td class="num">0</td>
+              <td class="num">3,000</td>
+              <td class="num">3,500</td>
+              <td class="num">57,500</td>
+              <td class="num">43,000</td>
+              <td class="num"><strong>100,500</strong></td>
+              <td class="num">~30</td>
+              <td class="num">0</td>
+            </tr>
+            <tr>
+              <td>2019</td>
+              <td class="num">55,000</td>
+              <td class="num">0</td>
+              <td class="num">2,000</td>
+              <td class="num">3,000</td>
+              <td class="num">60,000</td>
+              <td class="num">41,000</td>
+              <td class="num"><strong>101,000</strong></td>
+              <td class="num">~80</td>
+              <td class="num">0</td>
+            </tr>
+            <tr>
+              <td>2020</td>
+              <td class="num">62,000</td>
+              <td class="num">0</td>
+              <td class="num">1,500</td>
+              <td class="num">3,500</td>
+              <td class="num">67,000</td>
+              <td class="num">42,000</td>
+              <td class="num"><strong>109,000</strong></td>
+              <td class="num">~150</td>
+              <td class="num">0</td>
+            </tr>
+            <tr>
+              <td>2021</td>
+              <td class="num">56,000</td>
+              <td class="num">0</td>
+              <td class="num">2,000</td>
+              <td class="num">3,000</td>
+              <td class="num">61,000</td>
+              <td class="num">38,000</td>
+              <td class="num"><strong>99,000</strong></td>
+              <td class="num">~520</td>
+              <td class="num">0</td>
+            </tr>
+            <tr>
+              <td>2022</td>
+              <td class="num">53,500</td>
+              <td class="num">1,000</td>
+              <td class="num">4,500</td>
+              <td class="num">2,500</td>
+              <td class="num">61,500</td>
+              <td class="num">36,000</td>
+              <td class="num"><strong>97,500</strong></td>
+              <td class="num">~980</td>
+              <td class="num">0</td>
+            </tr>
+            <tr style="background:#f8fafc;">
+              <td><strong>2023 ⚡</strong></td>
+              <td class="num">55,000</td>
+              <td class="num">18,500</td>
+              <td class="num">5,500</td>
+              <td class="num">2,000</td>
+              <td class="num">81,000</td>
+              <td class="num">34,000</td>
+              <td class="num"><strong>115,000</strong></td>
+              <td class="num">~880</td>
+              <td class="num">0</td>
+            </tr>
+            <tr>
+              <td>2024</td>
+              <td class="num">33,500</td>
+              <td class="num">20,000</td>
+              <td class="num">5,500</td>
+              <td class="num">1,500</td>
+              <td class="num">60,500</td>
+              <td class="num">32,000</td>
+              <td class="num"><strong>92,500</strong></td>
+              <td class="num">~1,350</td>
+              <td class="num">0</td>
+            </tr>
+            <tr>
+              <td>2025</td>
+              <td class="num">11,000</td>
+              <td class="num">13,000</td>
+              <td class="num">3,500</td>
+              <td class="num">1,500</td>
+              <td class="num">29,000</td>
+              <td class="num">30,000</td>
+              <td class="num"><strong>59,000</strong></td>
+              <td class="num">~1,950</td>
+              <td class="num">0</td>
+            </tr>
+            <tr style="background:#eff6ff;">
+              <td><strong>2026 YTD</strong></td>
+              <td class="num" style="color:var(--red);">1,500</td>
+              <td class="num">2,500</td>
+              <td class="num">2,000</td>
+              <td class="num">1,500</td>
+              <td class="num" style="font-weight:700; color:#0d9488;">7,500</td>
+              <td class="num">28,000</td>
+              <td class="num" style="font-weight:700; color:var(--blue);">35,500</td>
+              <td class="num" style="color:var(--red); font-weight:700;">~2,100</td>
+              <td class="num" style="color:var(--cyan); font-weight:600;">32,000 (MIPYMES)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="table-hint">← Desliza horizontalmente para ver la tabla completa (el combustible privado de EE.UU. está excluido del balance estatal)</div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>© 2026 Investigación Energética Histórica - <a href="../index.html">Volver a la portada</a></p>
+    </div>
+  </footer>
+
+  <script>
+    const years12 = [2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026];
+    const vzla12 = [90000, 75000, 58000, 51000, 55000, 62000, 56000, 53500, 55000, 33500, 11000, 1500];
+    const mex12 = [0, 0, 0, 0, 0, 0, 0, 1000, 18500, 20000, 13000, 2500];
+    const rus12 = [0, 0, 4000, 3000, 2000, 1500, 2000, 4500, 5500, 5500, 3500, 2000];
+    const oth12 = [5000, 5000, 4000, 3500, 3000, 3500, 3000, 2500, 2000, 1500, 1500, 1500];
+    const usa12 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 32000];
+
+    const stateImports12 = [95000, 80000, 66000, 57500, 60000, 67000, 61000, 61500, 81000, 60500, 29000, 7500];
+    const stateFuel12 = [145000, 128000, 111000, 100500, 101000, 109000, 99000, 97500, 115000, 92500, 59000, 35500];
+    const deficit12 = [0, 0, 20, 30, 80, 150, 520, 980, 880, 1350, 1950, 2100];
+
+    new Chart(document.getElementById('chartHistoryImports').getContext('2d'), {
+      type: 'bar',
+      data: {
+        labels: years12,
+        datasets: [
+          { label: 'Venezuela (PDVSA)', data: vzla12, backgroundColor: '#dc2626' },
+          { label: 'México (PEMEX)', data: mex12, backgroundColor: '#16a34a' },
+          { label: 'Rusia', data: rus12, backgroundColor: '#1e40af' },
+          { label: 'Otros (Spot)', data: oth12, backgroundColor: '#94a3b8' },
+          { label: 'EE.UU. (Sector Privado / MIPYMES)', data: usa12, backgroundColor: '#0284c7' }
+        ]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: { legend: { position: 'bottom', labels: { boxWidth: 10, font: { size: 10 } } } },
+        scales: {
+          x: { stacked: true, grid: { display: false }, ticks: { font: { size: 10 } } },
+          y: { stacked: true, grid: { color: '#f1f5f9' }, ticks: { font: { size: 10 } } }
+        }
+      }
+    });
+
+    new Chart(document.getElementById('chartHistoryDeficit').getContext('2d'), {
+      type: 'line',
+      data: {
+        labels: years12,
+        datasets: [
+          {
+            label: 'Total Combustible Estatal (BPD)',
+            data: stateFuel12,
+            borderColor: '#2563eb',
+            backgroundColor: '#2563eb',
+            borderWidth: 2.5,
+            pointRadius: 4,
+            tension: 0.1,
+            yAxisID: 'y'
+          },
+          {
+            label: 'Total Imp. Vendidas al Gobierno (BPD)',
+            data: stateImports12,
+            borderColor: '#0d9488',
+            backgroundColor: '#0d9488',
+            borderWidth: 2,
+            borderDash: [5, 5],
+            pointRadius: 4,
+            tension: 0.1,
+            yAxisID: 'y'
+          },
+          {
+            label: 'Déficit Eléctrico (MW)',
+            data: deficit12,
+            type: 'bar',
+            backgroundColor: 'rgba(220, 38, 38, 0.65)',
+            borderRadius: 3,
+            yAxisID: 'y1'
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: { legend: { position: 'bottom', labels: { boxWidth: 10, font: { size: 10 } } } },
+        scales: {
+          x: { grid: { display: false }, ticks: { font: { size: 10 } } },
+          y: { type: 'linear', position: 'left', min: 0, max: 160000, grid: { color: '#f1f5f9' }, ticks: { font: { size: 9 }, color: '#2563eb' } },
+          y1: { type: 'linear', position: 'right', min: 0, max: 2500, grid: { display: false }, ticks: { font: { size: 9 }, color: '#dc2626' } }
+        }
+      }
+    });
+  </script>
+</body>
+</html>
