@@ -20,10 +20,13 @@ Auditoría numérica y estudio interactivo sobre la correlación entre las impor
 
 ## 📂 Estructura del Repositorio
 
-- `index.html`: Dashboard principal interactivo (2020–2026 YTD) con Chart.js, responsive para celular y escritorio.
+- `index.html`: Dashboard principal interactivo (2020–2026 YTD) con Chart.js, responsive para celular y escritorio (incluye gráfica mes a mes del déficit).
+- `cuba_energia_deficit_diario_une_2021_2026.csv` / `.json`: Serie histórica continua y diaria con más de **1,500 partes oficiales de la UNE** (2021–2026).
+- `cuba_energia_deficit_mensual_une_2021_2026.csv` / `.json`: Serie mensual consolidada (60 meses) con promedios, máximos y días de apagón continuo 24h.
+- `DICCIONARIO_DATOS_DEFICIT_UNE.md`: Diccionario de datos, metodología de extracción y guía de uso en Python/R/Excel.
 - `analisis_historico_2015_2025/`: Serie histórica completa de 12 años (2015–2026 YTD), analizando la era de superávit y reventa formal en Cuvenpetrol y el efecto umbral de los 110,000 BPD.
 - `assets/`: Gráficos de alta resolución generados en Python.
-- `scratch/`: Scripts de cálculo termodinámico y balances de masa.
+- `scratch/`: Scripts de extracción web, cálculo termodinámico y balances de masa.
 
 ---
 

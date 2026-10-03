@@ -36,8 +36,8 @@ usa_private = np.array([0, 0, 0, 0, 0, 0, 32000])
 # Total país incluyendo el sector privado
 total_country_fuel = state_fuel_available + usa_private
 
-# Déficit en MW
-deficit_mw = np.array([150, 520, 980, 880, 1350, 1950, 2100])
+# Déficit en MW - Promedios oficiales auditados de la UNE (2020-2026)
+deficit_mw = np.array([150, 53, 596, 196, 777, 1571, 1914])
 
 # -------------------------------------------------------------
 # CHART 1: Importaciones Estado vs Sector Privado

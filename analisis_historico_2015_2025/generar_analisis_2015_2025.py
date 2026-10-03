@@ -41,8 +41,8 @@ hydro_gwh = np.array([140, 135, 125, 120, 125, 130, 110, 105, 95, 90, 85, 90])
 wind_gwh = np.array([10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10])
 total_renewables_gwh = biomass_gwh + solar_gwh + hydro_gwh + wind_gwh
 
-# 3. Peak Generation Deficit (MW)
-deficit_mw = np.array([0, 0, 20, 30, 80, 150, 520, 980, 880, 1350, 1950, 2100])
+# 3. Peak Generation Deficit (MW) - Promedios oficiales auditados de la UNE (2021-2026)
+deficit_mw = np.array([0, 0, 20, 30, 80, 150, 53, 596, 196, 777, 1571, 1914])
 
 # -------------------------------------------------------------
 # CHART 1: 12-Year Fuel Imports & Country Share (2015-2026)

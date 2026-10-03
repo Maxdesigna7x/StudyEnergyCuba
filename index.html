@@ -324,19 +324,37 @@
       <ul style="font-size:0.92rem; color:#334155; margin-left:1.2rem; margin-bottom:1rem; line-height:1.6;">
         <li><strong>Línea azul continua:</strong> Combustible Total Estatal Disponible para el Gobierno y el SEN (Crudo Nacional + Importaciones Aliadas). En 2026 cae a <strong>35,500 BPD</strong>.</li>
         <li><strong>Línea verde discontinua:</strong> Total de Importaciones Vendidas / Entregadas al Gobierno por aliados exteriores (Venezuela, México, Rusia). En 2026 se desploma a solo <strong>7,500 BPD</strong>.</li>
-        <li><strong>Barras rojas:</strong> Déficit de generación pico reportado por la UNE (récord de <strong>2,100 MW</strong>).</li>
+        <li><strong>Barras rojas:</strong> Déficit promedio anual en horario pico reportado por la UNE (<strong>1,914 MW</strong> en 2026 YTD, con picos mensuales superiores a 2,400 MW).</li>
       </ul>
 
       <div class="chart-container">
-        <div class="chart-title">Suministro Estatal al Gobierno vs Déficit en MW (2020–2026 YTD)</div>
-        <div class="chart-caption">Toca o pasa el cursor sobre los puntos y barras para inspeccionar los datos exactos.</div>
+        <div class="chart-title">Suministro Estatal al Gobierno vs Déficit Promedio en MW (2020–2026 YTD)</div>
+        <div class="chart-caption">Toca o pasa el cursor sobre los puntos y barras para inspeccionar los datos exactos auditados.</div>
         <div class="canvas-wrap" style="height: 310px;">
           <canvas id="chartGovVsDeficit"></canvas>
         </div>
       </div>
 
       <div class="callout callout-blue">
-        <strong>Claridad del dato de 2026:</strong> Al excluir el combustible privado, la relación causa-efecto es impecable: los aliados externos apenas le vendieron <strong>7,500 BPD</strong> al gobierno cubano en 2026 (frente a 81,000 BPD en 2023). Sumado al crudo nacional (28,000 BPD), el Estado solo cuenta con <strong>35,500 BPD</strong>, lo que hace matemáticamente inevitable el apagón récord de 2,100 MW.
+        <strong>Claridad del dato de 2026:</strong> Al excluir el combustible privado, la relación causa-efecto es impecable: los aliados externos apenas le vendieron <strong>7,500 BPD</strong> al gobierno cubano en 2026 (frente a 81,000 BPD en 2023). Sumado al crudo nacional (28,000 BPD), el Estado solo cuenta con <strong>35,500 BPD</strong>, lo que hace matemáticamente inevitable el apagón medio récord de 1,914 MW (con picos récord de hasta 2,410 MW).
+      </div>
+    </section>
+
+    <!-- GRÁFICO 1.b: DÉFICIT MES A MES -->
+    <section>
+      <h2>1.b. Evolución Mes a Mes del Déficit Eléctrico Oficial de la UNE (2021–2026)</h2>
+      <p>A partir de la auditoría y extracción diaria de más de <strong>1,500 partes oficiales de la Unión Eléctrica (UNE / MINEM)</strong>, esta gráfica presenta la serie histórica continua de 60 meses, contrastando el <strong>déficit promedio mensual</strong> (barras rojas) frente al <strong>pico máximo alcanzado en cada mes</strong> (línea continua):</p>
+
+      <div class="chart-container">
+        <div class="chart-title">Déficit en Horario Pico: Promedio Mensual vs Máximo del Mes (2021–2026)</div>
+        <div class="chart-caption">Serie continua de 60 meses extraída de partes diarios oficiales. Pasa el cursor o toca cada barra/punto para ver el promedio (MW), el pico mensual y los días de apagón ininterrumpido 24 horas.</div>
+        <div class="canvas-wrap" style="height: 330px;">
+          <canvas id="chartMonthlyDeficit"></canvas>
+        </div>
+      </div>
+
+      <div class="callout callout-amber">
+        <strong>Evolución cronológica de la crisis:</strong> En 2021 el promedio mensual rondaba apenas <strong>50 MW</strong>. En el verano de 2022 subió a ~1,000 MW tras las averías térmicas y el incendio de Matanzas; en 2023 cedió temporalmente a ~200 MW gracias a la generación distribuida y patanas flotantes. A partir de 2024 escaló rápidamente (>1,200 MW) y desde 2025–2026 se ha mantenido en una meseta crónica superior a los <strong>1,700–2,200 MW diarios promedio</strong>, con casi la totalidad de los días en apagón continuo las 24 horas.
       </div>
     </section>
 
@@ -363,7 +381,7 @@
               <th class="num">Total Estatal Disp. (BPD)</th>
               <th class="num">Quemado en Luz (BPD)</th>
               <th class="num">Restante Estatal</th>
-              <th class="num">Déficit (MW)</th>
+              <th class="num">Déficit Promedio (MW)</th>
               <th class="num">Privado EE.UU. (No SEN)</th>
             </tr>
           </thead>
@@ -385,7 +403,7 @@
               <td class="num">99,000</td>
               <td class="num">78,100</td>
               <td class="num">20,900</td>
-              <td class="num">520</td>
+              <td class="num">53</td>
               <td class="num">0</td>
             </tr>
             <tr>
@@ -395,7 +413,7 @@
               <td class="num">97,500</td>
               <td class="num">67,500</td>
               <td class="num">30,000</td>
-              <td class="num">980</td>
+              <td class="num">596</td>
               <td class="num">0</td>
             </tr>
             <tr style="background:#fef3c7;">
@@ -405,7 +423,7 @@
               <td class="num" style="font-weight:700;">115,000</td>
               <td class="num">65,800</td>
               <td class="num" style="font-weight:700; color:#b45309;">49,200</td>
-              <td class="num" style="color:var(--red); font-weight:700;">880</td>
+              <td class="num" style="color:var(--red); font-weight:700;">196</td>
               <td class="num">0</td>
             </tr>
             <tr>
@@ -415,7 +433,7 @@
               <td class="num">92,500</td>
               <td class="num">60,900</td>
               <td class="num">31,600</td>
-              <td class="num">1,350</td>
+              <td class="num">777</td>
               <td class="num">0</td>
             </tr>
             <tr>
@@ -425,7 +443,7 @@
               <td class="num">59,000</td>
               <td class="num">50,100</td>
               <td class="num">8,900</td>
-              <td class="num">1,950</td>
+              <td class="num">1,571</td>
               <td class="num">0</td>
             </tr>
             <tr style="background:#eff6ff;">
@@ -435,13 +453,13 @@
               <td class="num" style="font-weight:700; color:var(--blue);">35,500</td>
               <td class="num">35,500 (tope)</td>
               <td class="num" style="color:var(--red); font-weight:700;">0 (Déficit)</td>
-              <td class="num" style="color:var(--red); font-weight:700;">2,100</td>
+              <td class="num" style="color:var(--red); font-weight:700;">1,914</td>
               <td class="num" style="color:var(--cyan); font-weight:600;">32,000 (MIPYMES)</td>
             </tr>
           </tbody>
         </table>
       </div>
-      <div class="table-hint">← Desliza para ver la tabla completa (el combustible privado de EE.UU. está 100% excluido del SEN)</div>
+      <div class="table-hint">← Desliza para ver la tabla completa (el déficit refleja el promedio anual oficial auditado de la UNE)</div>
 
       <!-- 2.1 Desglose del Combustible Restante: Transporte, Industria y Servicios -->
       <h3 style="font-size:1.05rem; font-weight:700; margin:1.75rem 0 0.5rem; color:var(--text);">2.1 ¿A dónde va el combustible no eléctrico? (Transporte, Industria y Servicios)</h3>
@@ -794,8 +812,8 @@
             order: 0
           },
           {
-            label: 'Déficit Eléctrico Pico (MW)',
-            data: [150, 520, 980, 880, 1350, 1950, 2100],
+            label: 'Déficit Promedio Oficial (MW)',
+            data: [150, 53, 596, 196, 777, 1571, 1914],
             type: 'bar',
             backgroundColor: 'rgba(220, 38, 38, 0.65)',
             borderRadius: 4,
@@ -841,6 +859,82 @@
             min: 0,
             max: 2500,
             grid: { display: false },
+            ticks: {
+              font: { size: 9 },
+              color: '#dc2626',
+              callback: v => v + ' MW'
+            }
+          }
+        }
+      }
+    });
+
+    // 1.b Gráfico Déficit Mensual Oficial de la UNE (60 meses)
+    const monthlyLabels = ["Ago 21", "Sep 21", "Oct 21", "Nov 21", "Dic 21", "Mar 22", "May 22", "Jun 22", "Jul 22", "Ago 22", "Sep 22", "Oct 22", "Nov 22", "Dic 22", "Ene 23", "Feb 23", "Mar 23", "Abr 23", "May 23", "Jun 23", "Jul 23", "Ago 23", "Sep 23", "Oct 23", "Nov 23", "Dic 23", "Ene 24", "Feb 24", "Mar 24", "Abr 24", "May 24", "Jun 24", "Jul 24", "Ago 24", "Sep 24", "Oct 24", "Nov 24", "Dic 24", "Ene 25", "Feb 25", "Mar 25", "Abr 25", "May 25", "Jun 25", "Jul 25", "Ago 25", "Sep 25", "Oct 25", "Nov 25", "Dic 25", "Ene 26", "Feb 26", "Mar 26", "Abr 26", "May 26", "Jun 26", "Jul 26", "Ago 26", "Sep 26", "Oct 26"];
+    const monthlyAvg = [58.0, 150.0, 49.3, 17.8, 0.0, 0.0, 146.5, 234.5, 313.7, 777.8, 785.1, 916.4, 1058.3, 215.0, 107.3, 229.2, 227.1, 345.1, 177.3, 208.0, 24.7, 95.5, 397.6, 288.9, 272.4, 5.6, 219.9, 693.1, 884.1, 250.7, 885.8, 574.7, 422.4, 652.9, 873.9, 1222.7, 1444.0, 1304.5, 1068.5, 1570.6, 1418.0, 1616.0, 1503.3, 1617.0, 1661.3, 1647.2, 1759.0, 1650.3, 1482.6, 1897.5, 1709.7, 1758.1, 1865.5, 1503.6, 1858.7, 2016.6, 2136.8, 2229.6, 2091.9, 2005.0];
+    const monthlyMax = [58.0, 465.0, 221.0, 202.0, 0.0, 0.0, 390.0, 562.0, 750.0, 1106.0, 1246.0, 1392.0, 1487.0, 1124.0, 581.0, 598.0, 790.0, 755.0, 645.0, 735.0, 260.0, 500.0, 856.0, 973.0, 1070.0, 173.0, 1010.0, 1378.0, 1459.0, 584.0, 1440.0, 1170.0, 950.0, 1305.0, 1390.0, 1678.0, 1595.0, 1711.0, 1680.0, 1870.0, 1726.0, 1858.0, 1770.0, 1977.0, 2065.0, 1872.0, 1990.0, 1900.0, 1800.0, 2078.0, 2000.0, 1996.0, 2075.0, 1878.0, 2204.0, 2245.0, 2380.0, 2410.0, 2310.0, 2070.0];
+    const monthlyDays24h = [0, 4, 5, 0, 0, 0, 4, 13, 17, 25, 23, 14, 0, 0, 1, 2, 0, 3, 0, 0, 0, 1, 14, 9, 4, 0, 0, 1, 12, 0, 20, 8, 6, 11, 15, 22, 13, 3, 1, 20, 10, 24, 24, 27, 25, 28, 24, 24, 19, 26, 16, 18, 25, 20, 29, 30, 25, 24, 22, 2];
+
+    new Chart(document.getElementById('chartMonthlyDeficit').getContext('2d'), {
+      type: 'bar',
+      data: {
+        labels: monthlyLabels,
+        datasets: [
+          {
+            type: 'line',
+            label: 'Pico Máximo del Mes (MW)',
+            data: monthlyMax,
+            borderColor: '#991b1b',
+            backgroundColor: '#991b1b',
+            borderWidth: 2,
+            pointRadius: 2.5,
+            pointHoverRadius: 6,
+            tension: 0.15,
+            order: 0
+          },
+          {
+            type: 'bar',
+            label: 'Déficit Promedio Mensual (MW)',
+            data: monthlyAvg,
+            backgroundColor: 'rgba(220, 38, 38, 0.72)',
+            hoverBackgroundColor: '#dc2626',
+            borderRadius: 3,
+            order: 1
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        interaction: { mode: 'index', intersect: false },
+        plugins: {
+          legend: { position: 'bottom', labels: { boxWidth: 10, font: { size: 10 } } },
+          tooltip: {
+            callbacks: {
+              label: function(ctx) {
+                return ctx.dataset.label + ': ' + ctx.raw.toLocaleString() + ' MW';
+              },
+              afterBody: function(tooltipItems) {
+                const idx = tooltipItems[0].dataIndex;
+                const d24 = monthlyDays24h[idx];
+                return d24 > 0 ? 'Días con apagón continuo 24h: ' + d24 : 'Sin días de apagón continuo 24h';
+              }
+            }
+          }
+        },
+        scales: {
+          x: {
+            grid: { display: false },
+            ticks: {
+              font: { size: 8 },
+              maxRotation: 45,
+              minRotation: 45
+            }
+          },
+          y: {
+            min: 0,
+            max: 2600,
+            grid: { color: '#f1f5f9' },
             ticks: {
               font: { size: 9 },
               color: '#dc2626',

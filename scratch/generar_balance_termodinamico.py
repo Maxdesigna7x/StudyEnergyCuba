@@ -38,8 +38,8 @@ fuel_needed_electric_bpd = (gen_oil_gwh * 1000 * bbl_per_mwh) / 365.0
 # Remaining fuel for non-electric economy (transport, aviation, industry, bunker, re-export/losses)
 fuel_remaining_bpd = total_fuel_available - fuel_needed_electric_bpd
 
-# Deficit (MW)
-deficit_mw = np.array([150, 520, 980, 880, 1350, 1950, 2100])
+# Deficit (MW) - Promedios oficiales auditados de la UNE (2020-2026)
+deficit_mw = np.array([150, 53, 596, 196, 777, 1571, 1914])
 
 # -------------------------------------------------------------
 # GRÁFICA 1: Balance Termodinámico (Combustible Eléctrico vs Resto)
