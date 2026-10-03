@@ -777,7 +777,8 @@
             pointRadius: 5,
             pointHoverRadius: 7,
             tension: 0.15,
-            yAxisID: 'y'
+            yAxisID: 'y',
+            order: 0
           },
           {
             label: 'Imp. Vendidas al Gob. (BPD)',
@@ -789,7 +790,8 @@
             pointRadius: 5,
             pointHoverRadius: 7,
             tension: 0.15,
-            yAxisID: 'y'
+            yAxisID: 'y',
+            order: 0
           },
           {
             label: 'Déficit Eléctrico Pico (MW)',
@@ -797,7 +799,8 @@
             type: 'bar',
             backgroundColor: 'rgba(220, 38, 38, 0.65)',
             borderRadius: 4,
-            yAxisID: 'y1'
+            yAxisID: 'y1',
+            order: 2
           }
         ]
       },
@@ -901,30 +904,37 @@
             label: 'Averías/Mant. CTEs (MW)',
             data: [350, 550, 850, 950, 1000, 1100, 1150],
             backgroundColor: '#991b1b',
-            stack: 'combined'
+            stack: 'combined',
+            order: 2
           },
           {
             label: 'Averías Mecánicas Motores (MW)',
             data: [400, 500, 650, 800, 900, 950, 950],
             backgroundColor: '#ea580c',
-            stack: 'combined'
+            stack: 'combined',
+            order: 2
           },
           {
             label: 'Falta de Combustible (MW)',
             data: [100, 250, 450, 450, 650, 850, 1100],
             backgroundColor: '#0d9488',
-            stack: 'combined'
+            stack: 'combined',
+            order: 2
           },
           {
             label: 'Déficit Pico UNE (MW)',
             data: [150, 520, 980, 880, 1350, 1950, 2100],
             type: 'line',
             borderColor: '#2563eb',
-            backgroundColor: '#2563eb',
-            borderWidth: 2.8,
-            pointRadius: 5,
-            pointHoverRadius: 7,
-            tension: 0.15
+            backgroundColor: '#ffffff',
+            pointBackgroundColor: '#ffffff',
+            pointBorderColor: '#2563eb',
+            pointBorderWidth: 2.5,
+            borderWidth: 3.5,
+            pointRadius: 6,
+            pointHoverRadius: 8,
+            tension: 0.15,
+            order: 0
           }
         ]
       },
